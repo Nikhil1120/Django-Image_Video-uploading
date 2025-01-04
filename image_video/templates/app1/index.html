@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/send/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{form.as_table}}</td>
+            </tr>
+          
+            <tr>
+                <td><input type="submit" value="upload"></td>
+            </tr>
+
+        </table>
+        <a href="/view_data">View</a>
+    </form>
+    
+
+
+<br><br>
+
+        {% if img_obj %}  
+        <h3>Succesfully uploaded : {{img_obj.caption}}</h3>  
+        <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px">  
+    {% endif %}  
+</body>
+</html>
